@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VK Smart Tools - Free PDF, Image & Print Tools</title>
+<meta name="description" content="Free online JPG to PDF, PDF to JPG, PDF merge, PDF split, image resize, compress, passport photo and A4 print tools.">
+<meta name="robots" content="index,follow">
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,sans-serif;background:#f5f7fb;color:#172033}
+header{background:linear-gradient(135deg,#0f172a,#2563eb);color:white;text-align:center;padding:32px 15px}
+.logo{font-size:36px;font-weight:900}.tag{color:#dbeafe;margin-top:7px}
+nav{position:sticky;top:0;background:#fff;border-bottom:1px solid #ddd;z-index:5;text-align:center;padding:10px}
+nav a{margin:0 10px;text-decoration:none;color:#2563eb;font-weight:bold}
+main{max-width:1150px;margin:auto;padding:20px 15px}.hero,.card{background:#fff;border-radius:16px;padding:20px;box-shadow:0 5px 20px #0000000d}
+.hero{margin-bottom:20px}.hero p,.card p{color:#64748b}.tools{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px}
+.card h2{font-size:18px;margin:0 0 7px}.card input,.card select{width:100%;padding:10px;border:1px solid #cbd5e1;border-radius:9px;margin:6px 0}
+button{width:100%;padding:11px;border:0;border-radius:10px;background:#2563eb;color:#fff;font-weight:bold;cursor:pointer;margin-top:6px}
+button:hover{background:#1d4ed8}.status{font-size:13px;color:#475569;margin-top:8px;min-height:18px}.ad{border:1px dashed #cbd5e1;padding:18px;text-align:center;color:#94a3b8;border-radius:12px;margin:20px 0}
+footer{text-align:center;padding:35px;color:#64748b}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+@media(max-width:600px){.logo{font-size:29px}.grid{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header><div class="logo">VK SMART TOOLS</div><div class="tag">Free Online PDF, Image & Print Tools</div></header>
+<nav><a href="#pdf">PDF</a><a href="#image">Image</a><a href="#print">Print</a></nav>
+<main>
+<section class="hero"><h1>Free Online Tools</h1><p>Fast browser-based tools for PDF, photos and printing. Files are processed locally where supported.</p></section>
+<div class="ad">Advertisement space — connect Google AdSense after publishing and approval.</div>
+
+<h2 id="pdf">PDF Tools</h2>
+<section class="tools">
+<div class="card"><h2>JPG / PNG → PDF</h2><p>Convert multiple images to one PDF.</p><input id="ipdf" type="file" accept="image/*" multiple><button onclick="imagesPDF()">Convert</button><div id="a" class="status"></div></div>
+<div class="card"><h2>PDF → JPG</h2><p>Render every PDF page as a JPG.</p><input id="pjpg" type="file" accept="application/pdf"><button onclick="pdfToJpg()">Convert Pages</button><div id="b" class="status"></div></div>
+<div class="card"><h2>PDF Merge</h2><p>Combine multiple PDFs into one file.</p><input id="merge" type="file" accept="application/pdf" multiple><button onclick="mergePDF()">Merge</button><div id="c" class="status"></div></div>
+<div class="card"><h2>PDF Split</h2><p>Extract one page from a PDF.</p><input id="split" type="file" accept="application/pdf"><input id="pg" type="number" min="1" value="1" placeholder="Page number"><button onclick="splitPDF()">Extract Page</button><div id="d" class="status"></div></div>
+<div class="card"><h2>PDF Compress</h2><p>Basic PDF re-save. Large-file optimization may require server processing.</p><input id="cpdf" type="file" accept="application/pdf"><button onclick="processPDF()">Process PDF</button><div id="e" class="status"></div></div>
+</section>
+
+<h2 id="image" style="margin-top:28px">Image Tools</h2>
+<section class="tools">
+<div class="card"><h2>Resize Image</h2><p>Set exact width and height in pixels.</p><input id="rf" type="file" accept="image/*"><div class="grid"><input id="rw" type="number" placeholder="Width"><input id="rh" type="number" placeholder="Height"></div><button onclick="resizeImg()">Download</button></div>
+<div class="card"><h2>Compress Image</h2><p>Reduce JPG quality and file size.</p><input id="cf" type="file" accept="image/*"><input id="q" type="range" min="10" max="95" value="70"><button onclick="compressImg()">Download</button></div>
+<div class="card"><h2>Crop Image</h2><p>Center crop to your selected dimensions.</p><input id="crf" type="file" accept="image/*"><div class="grid"><input id="crw" type="number" placeholder="Width"><input id="crh" type="number" placeholder="Height"></div><button onclick="cropImg()">Download</button></div>
+<div class="card"><h2>Image → Word</h2><p>Create a DOCX containing the image.</p><input id="wf" type="file" accept="image/*"><button onclick="toWord()">Create Word</button></div>
+</section>
+
+<h2 id="print" style="margin-top:28px">Print Tools</h2>
+<section class="tools">
+<div class="card"><h2>A4 Photo Print</h2><p>Arrange photos on an A4-size JPG sheet.</p><input id="af" type="file" accept="image/*" multiple><select id="cols"><option value="4">4 columns</option><option value="3">3 columns</option><option value="5">5 columns</option></select><button onclick="a4Print()">Create A4</button></div>
+<div class="card"><h2>Passport Photo Sheet</h2><p>Create a multi-photo passport-size sheet.</p><input id="pf" type="file" accept="image/*"><button onclick="passport()">Create Sheet</button></div>
+<div class="card"><h2>Signature Resize</h2><p>Resize a signature for online forms.</p><input id="sf" type="file" accept="image/*"><div class="grid"><input id="sw" type="number" value="300"><input id="sh" type="number" value="100"></div><button onclick="signature()">Download</button></div>
+</section>
+</main>
+<footer>© 2026 VK SMART TOOLS · Free Online Tools</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/docx/8.5.0/docx.umd.js"></script>
+<script type="module">
+import * as pdfjsLib from "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.min.mjs";
+pdfjsLib.GlobalWorkerOptions.workerSrc="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.4.168/pdf.worker.min.mjs";
+window.pdfjsLib=pdfjsLib;
+</script>
+<script>
+const $=id=>document.getElementById(id);
+const read=f=>new Promise((r,j)=>{let x=new FileReader();x.onload=()=>r(x.result);x.onerror=j;x.readAsDataURL(f)});
+const image=s=>new Promise((r,j)=>{let i=new Image();i.onload=()=>r(i);i.onerror=j;i.src=s});
+function dl(blob,name){let a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=name;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),1500)}
+async function imagesPDF(){let fs=[...$('ipdf').files];if(!fs.length)return alert('Select images.');let {jsPDF}=jspdf,p=new jsPDF({unit:'mm',format:'a4'});for(let n=0;n<fs.length;n++){if(n)p.addPage();let s=await read(fs[n]),i=await image(s),z=Math.min(180/i.width,260/i.height),w=i.width*z,h=i.height*z;p.addImage(s,'JPEG',(210-w)/2,(297-h)/2,w,h)}p.save('vk-images.pdf');$('a').textContent='PDF downloaded.'}
+async function pdfToJpg(){let f=$('pjpg').files[0];if(!f)return alert('Select PDF.');if(!window.pdfjsLib){return setTimeout(pdfToJpg,800)}let pdf=await window.pdfjsLib.getDocument({data:await f.arrayBuffer()}).promise;for(let n=1;n<=pdf.numPages;n++){let page=await pdf.getPage(n),v=page.getViewport({scale:2}),c=document.createElement('canvas');c.width=v.width;c.height=v.height;await page.render({canvasContext:c.getContext('2d'),viewport:v}).promise;await new Promise(res=>c.toBlob(b=>{dl(b,'page-'+n+'.jpg');res()},'image/jpeg',.92))}$('b').textContent=pdf.numPages+' page(s) converted.'}
+async function mergePDF(){let fs=[...$('merge').files];if(fs.length<2)return alert('Select 2 or more PDFs.');try{let out=await PDFLib.PDFDocument.create();for(let f of fs){let src=await PDFLib.PDFDocument.load(await f.arrayBuffer()),pages=await out.copyPages(src,src.getPageIndices());pages.forEach(p=>out.addPage(p))}dl(new Blob([await out.save()],{type:'application/pdf'}),'merged.pdf');$('c').textContent='Merged successfully.'}catch(e){alert('Merge failed.')}}
+async function splitPDF(){let f=$('split').files[0],n=+$('pg').value;if(!f)return alert('Select PDF.');try{let src=await PDFLib.PDFDocument.load(await f.arrayBuffer());if(n<1||n>src.getPageCount())return alert('Invalid page number.');let out=await PDFLib.PDFDocument.create(),[p]=await out.copyPages(src,[n-1]);out.addPage(p);dl(new Blob([await out.save()],{type:'application/pdf'}),'page-'+n+'.pdf');$('d').textContent='Page extracted.'}catch(e){alert('Split failed.')}}
+async function processPDF(){let f=$('cpdf').files[0];if(!f)return alert('Select PDF.');dl(new Blob([await f.arrayBuffer()],{type:'application/pdf'}),'processed.pdf');$('e').textContent='Processed. True compression requires optimization of PDF objects/images.'}
+async function cv(f,w,h,q=.9,crop=false){let i=await image(await read(f)),c=document.createElement('canvas');c.width=w;c.height=h;let x=c.getContext('2d');if(crop){let s=Math.max(w/i.width,h/i.height),nw=i.width*s,nh=i.height*s;x.drawImage(i,(w-nw)/2,(h-nh)/2,nw,nh)}else x.drawImage(i,0,0,w,h);return new Promise(r=>c.toBlob(r,'image/jpeg',q))}
+async function resizeImg(){let f=$('rf').files[0],w=+$('rw').value,h=+$('rh').value;if(!f||!w||!h)return alert('Select image and dimensions.');dl(await cv(f,w,h),'resized.jpg')}
+async function compressImg(){let f=$('cf').files[0];if(!f)return alert('Select image.');let i=await image(await read(f));dl(await cv(f,i.width,i.height,+$('q').value/100),'compressed.jpg')}
+async function cropImg(){let f=$('crf').files[0],w=+$('crw').value,h=+$('crh').value;if(!f||!w||!h)return alert('Select image and crop size.');dl(await cv(f,w,h,.92,true),'cropped.jpg')}
+async function a4Print(){let fs=[...$('af').files];if(!fs.length)return alert('Select photos.');let c=document.createElement('canvas');c.width=2480;c.height=3508;let x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);let cols=+$('cols').value,cw=2480/cols,ch=700;for(let n=0;n<Math.min(fs.length,cols*5);n++){let i=await image(await read(fs[n])),s=Math.min((cw-20)/i.width,(ch-20)/i.height),w=i.width*s,h=i.height*s,col=n%cols,row=Math.floor(n/cols);x.drawImage(i,col*cw+(cw-w)/2,row*ch+(ch-h)/2,w,h)}c.toBlob(b=>dl(b,'a4-print.jpg'),'image/jpeg',.95)}
+async function passport(){let f=$('pf').files[0];if(!f)return alert('Select photo.');let i=await image(await read(f)),c=document.createElement('canvas');c.width=2480;c.height=3508;let x=c.getContext('2d');x.fillStyle='#fff';x.fillRect(0,0,c.width,c.height);let w=413,h=531,g=35;for(let r=0;r<6;r++)for(let col=0;col<5;col++){let s=Math.min(w/i.width,h/i.height),ww=i.width*s,hh=i.height*s;x.drawImage(i,col*(w+g)+(w-ww)/2,r*(h+g)+(h-hh)/2,ww,hh)}c.toBlob(b=>dl(b,'passport-photo-sheet.jpg'),'image/jpeg',.95)}
+async function signature(){let f=$('sf').files[0];if(!f)return alert('Select signature.');dl(await cv(f,+$('sw').value,+$('sh').value),'signature.jpg')}
+async function toWord(){let f=$('wf').files[0];if(!f)return alert('Select image.');let src=await read(f),buf=await(await fetch(src)).arrayBuffer(),D=docx,d=new D.Document({sections:[{children:[new D.Paragraph({children:[new D.ImageRun({data:buf,transformation:{width:500,height:350}})]})]}]});dl(await D.Packer.toBlob(d),'image-to-word.docx')}
+</script>
+</body></html>
